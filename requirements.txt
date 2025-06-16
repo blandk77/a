@@ -44,3 +44,6 @@ uvloop
 xattr
 yt-dlp[default,curl-cffi]
 pytz
+Jinja2
+werkzeug
+itsdangerous
