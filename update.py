@@ -18,10 +18,6 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/')
-def health_check():
-    return 'Flask Started!', 200
-
 if ospath.exists("log.txt"):
     with open("log.txt", "r+") as f:
         f.truncate(0)
@@ -111,8 +107,3 @@ if UPSTREAM_REPO is not None:
     else:
         log_error("Something went Wrong ! Retry or Ask Support !")
     log_info(f"UPSTREAM_REPO: {UPSTREAM_REPO} | UPSTREAM_BRANCH: {UPSTREAM_BRANCH}")
-
-if __name__ == "__main__":
-    Thread(target=run_bot).start()
-    port = int(os.getenv("PORT", 8080))
-    app.run(host="0.0.0.0", port=port)
