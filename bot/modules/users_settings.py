@@ -305,7 +305,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             "Enabled" if user_dict.get("bot_pm", config_dict["BOT_PM"]) else "Disabled"
         )
         buttons.ibutton(
-            "✖️ Bot PM" if bot_pm == "Enabled" else "✓ Bot PM",
+            "✓ Bot PM" if bot_pm == "Enabled" else " Bot PM",
             f"userset {user_id} bot_pm",
         )
         if config_dict["BOT_PM"]:
@@ -436,7 +436,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             else "Disabled"
         )
         buttons.ibutton(
-            "✖️ MediaInfo" if mediainfo == "Enabled" else "✓ MediaInfo",
+            "✓ MediaInfo" if mediainfo == "Enabled" else " MediaInfo",
             f"userset {user_id} mediainfo",
         )
         if config_dict["SHOW_MEDIAINFO"]:
@@ -478,7 +478,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
         )
         for btn in ["gofile", "streamtape"]:
             buttons.ibutton(
-                f"{'✅️' if btn in serv_list else ''} {fname_dict[btn]}",
+                f"{'✓' if btn in serv_list else ''} {fname_dict[btn]}",
                 f"userset {user_id} {btn}",
             )
         buttons.ibutton("Back", f"userset {user_id} back mirror", "footer")
