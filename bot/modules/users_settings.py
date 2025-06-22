@@ -193,26 +193,6 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             f"{'✅️' if u_sess != 'Not Exists' else ''} User Session",
             f"userset {user_id} usess",
         )
-        bot_pm = (
-            "Enabled" if user_dict.get("bot_pm", config_dict["BOT_PM"]) else "Disabled"
-        )
-        buttons.ibutton(
-            "Disable Bot PM" if bot_pm == "Enabled" else "Enable Bot PM",
-            f"userset {user_id} bot_pm",
-        )
-        if config_dict["BOT_PM"]:
-            bot_pm = "Force Enabled"
-        mediainfo = (
-            "Enabled"
-            if user_dict.get("mediainfo", config_dict["SHOW_MEDIAINFO"])
-            else "Disabled"
-        )
-        buttons.ibutton(
-            "Disable MediaInfo" if mediainfo == "Enabled" else "Enable MediaInfo",
-            f"userset {user_id} mediainfo",
-        )
-        if config_dict["SHOW_MEDIAINFO"]:
-            mediainfo = "Force Enabled"
         save_mode = "Save As Dump" if user_dict.get("save_mode") else "Save As BotPM"
         buttons.ibutton(
             "Save As BotPM" if save_mode == "Save As Dump" else "Save As Dump",
@@ -239,8 +219,6 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             YT=escape(ytopt),
             DT=f"{dailytas} / {dailytl}",
             LAST_USED=lastused,
-            BOT_PM=bot_pm,
-            MEDIAINFO=mediainfo,
             SAVE_MODE=save_mode,
             USESS=u_sess,
         )
@@ -323,6 +301,15 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
         buttons.ibutton("Close", f"userset {user_id} close", "footer")
         button = buttons.build_menu(2)
     elif key == "leech":
+        bot_pm = (
+            "Enabled" if user_dict.get("bot_pm", config_dict["BOT_PM"]) else "Disabled"
+        )
+        buttons.ibutton(
+            "✖️ Bot PM" if bot_pm == "Enabled" else "✓ Bot PM",
+            f"userset {user_id} bot_pm",
+        )
+        if config_dict["BOT_PM"]:
+            bot_pm = "Force Enabled"        
         if (
             user_dict.get("as_doc", False)
             or "as_doc" not in user_dict
@@ -347,7 +334,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
 
         thumbmsg = "Exists" if await aiopath.exists(thumbpath) else "Not Exists"
         buttons.ibutton(
-            f"{'✅️' if thumbmsg == 'Exists' else ''} Thumbnail",
+            f"{'✓' if thumbmsg == 'Exists' else ''} Thumbnail",
             f"userset {user_id} thumb",
         )
 
@@ -367,7 +354,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             else "Disabled"
         )
         buttons.ibutton(
-            f"{'✅️' if user_dict.get('split_size') else ''} Leech Splits",
+            f"{'✓' if user_dict.get('split_size') else ''} Leech Splits",
             f"userset {user_id} split_size",
         )
 
@@ -382,7 +369,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             else val
         )
         buttons.ibutton(
-            f"{'✅️' if lcaption != 'Not Exists' else ''} Leech Caption",
+            f"{'✓' if lcaption != 'Not Exists' else ''} Leech Caption",
             f"userset {user_id} lcaption",
         )
 
@@ -397,7 +384,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             else val
         )
         buttons.ibutton(
-            f"{'✅️' if lprefix != 'Not Exists' else ''} Leech Prefix",
+            f"{'✓' if lprefix != 'Not Exists' else ''} Leech Prefix",
             f"userset {user_id} lprefix",
         )
 
@@ -412,7 +399,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             else val
         )
         buttons.ibutton(
-            f"{'✅️' if lsuffix != 'Not Exists' else ''} Leech Suffix",
+            f"{'✓' if lsuffix != 'Not Exists' else ''} Leech Suffix",
             f"userset {user_id} lsuffix",
         )
 
@@ -427,7 +414,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             else val
         )
         buttons.ibutton(
-            f"{'✅️' if lremname != 'Not Exists' else ''} Leech Remname",
+            f"{'✓' if lremname != 'Not Exists' else ''} Leech Remname",
             f"userset {user_id} lremname",
         )
 
@@ -440,14 +427,26 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             else val
         )
         buttons.ibutton(
-            f"{'✅️' if lmeta != 'Not Exists' else ''} Metadata",
+            f"{'✓' if lmeta != 'Not Exists' else ''} Metadata",
             f"userset {user_id} lmeta",
+        )      
+        mediainfo = (
+            "Enabled"
+            if user_dict.get("mediainfo", config_dict["SHOW_MEDIAINFO"])
+            else "Disabled"
         )
+        buttons.ibutton(
+            "✖️ MediaInfo" if mediainfo == "Enabled" else "✓ MediaInfo",
+            f"userset {user_id} mediainfo",
+        )
+        if config_dict["SHOW_MEDIAINFO"]:
+            mediainfo = "Force Enabled"        
 
         text = BotTheme(
             "LEECH",
             NAME=name,
             DL=f"{dailyll} / {dailytlle}",
+            BOT_PM=bot_pm,            
             LTYPE=ltype,
             THUMB=thumbmsg,
             SPLIT_SIZE=split_size,
@@ -459,6 +458,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
             LDUMP=ldump,
             LREMNAME=escape(lremname),
             LMETA=escape(lmeta),
+            MEDIAINFO=mediainfo,
         )
 
         buttons.ibutton("Back", f"userset {user_id} back", "footer")
