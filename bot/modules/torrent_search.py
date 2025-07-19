@@ -4,7 +4,7 @@ from pyrogram.filters import command, regex
 from aiohttp import ClientSession
 from html import escape
 from urllib.parse import quote
-
+from pyrogram import filters 
 from bot import bot, LOGGER, config_dict, get_client
 from bot.helper.telegram_helper.message_utils import editMessage, sendMessage
 from bot.helper.ext_utils.telegraph_helper import telegraph
@@ -327,7 +327,7 @@ bot.add_handler(
     MessageHandler(
         torrentSearch,
         filters=command(BotCommands.SearchCommand)
-        & CustomFilters.authorized
+        & filters.private
         & ~CustomFilters.blacklisted,
     )
 )
