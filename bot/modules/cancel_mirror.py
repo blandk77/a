@@ -109,8 +109,8 @@ bot.add_handler(
     MessageHandler(
         cancel_mirror,
         filters=regex(f"^/{BotCommands.CancelMirror}(_\w+)?(?!all)")
-        & filters.private
-        & filters.groups
+        & filters.private,
+        & filters.group,
         & ~CustomFilters.blacklisted,
     )
 )
