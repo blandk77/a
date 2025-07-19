@@ -2,14 +2,13 @@
 class WZMLStyle:
     # ----------------------
     # async def start(client, message) ---> __main__.py
-    ST_BN1_NAME = "Nothing 👀"
-    ST_BN1_URL = "t.me/itsme123i"
-    ST_BN2_NAME = "Updates"
-    ST_BN2_URL = "https://t.me/The_TGguy"
-    ST_MSG = """<i>This bot can mirror all your links|files|torrents to Google Drive or any rclone cloud or to telegram or to ddl servers.</i>
-<b>Type {help_command} to get a list of available commands</b>"""
-    ST_BOTPM = """<i>Now, This bot will send all your files and links here. Start Using ...</i>"""
-    ST_UNAUTH = """<i>You Are not authorized user!</i>"""
+    ST_BN1_NAME = "Uᴘᴅᴀᴛᴇs"
+    ST_BN1_URL = "t.me/The_TGguy"
+    ST_BN2_NAME = "Sᴜᴘᴘᴏʀᴛ"
+    ST_BN2_URL = "https://t.me/+jxQqum8eS-M5YzY1"
+    ST_MSG = """ """
+    ST_BOTPM = """ """
+    ST_UNAUTH = """ """
     OWN_TOKEN_GENERATE = (
         """<b>Temporary Token is not yours!</b>\n\n<i>Kindly generate your own.</i>"""
     )
@@ -91,14 +90,11 @@ class WZMLStyle:
 ⌬ <b>REMARKS :</b> <code>{remarks}</code>
     """
     BOT_LIMITS = """⌬ <b><i>BOT LIMITATIONS :</i></b>
-┠ <b>Direct Limit :</b> {DL} GB
-┠ <b>Torrent Limit :</b> {TL} GB
-┠ <b>GDrive Limit :</b> {GL} GB
+
+┎ <b>Torrent Limit :</b> {TL} GB
 ┠ <b>YT-DLP Limit :</b> {YL} GB
-┠ <b>Playlist Limit :</b> {PL}
-┠ <b>Mega Limit :</b> {ML} GB
-┠ <b>Clone Limit :</b> {CL} GB
-┖ <b>Leech Limit :</b> {LL} GB
+┖ <b>Playlist Limit :</b> {PL}
+
 
 ┎ <b>Token Validity :</b> {TV}
 ┠ <b>User Time Limit :</b> {UTI} / task
@@ -221,7 +217,7 @@ class WZMLStyle:
     UL = "<b>UL:</b> {UL}/s"
 
     ###--------BUTTONS-------
-    PREVIOUS = "⫷"
+    PREVIOUS = "⫷" ""
     REFRESH = "ᴘᴀɢᴇs\n{Page}"
     NEXT = "⫸"
     # ---------------------
