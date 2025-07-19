@@ -4,7 +4,7 @@ from aiohttp import ClientSession
 from requests import get as rget
 from urllib.parse import quote as q
 from pycountry import countries as conn
-
+from pyrogram import filters 
 from pyrogram.filters import command, regex
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.errors import (
@@ -218,7 +218,7 @@ bot.add_handler(
     MessageHandler(
         mydramalist_search,
         filters=command(BotCommands.MyDramaListCommand)
-        & CustomFilters.authorized
+        & filters.private
         & ~CustomFilters.blacklisted,
     )
 )
