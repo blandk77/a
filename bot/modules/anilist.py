@@ -15,7 +15,7 @@ from bot.helper.telegram_helper.button_build import ButtonMaker
 from bot.helper.ext_utils.bot_utils import get_readable_time
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.filters import command, regex
-
+from pyrogram import filters
 
 GENRES_EMOJI = {
     "Action": "👊",
@@ -212,9 +212,8 @@ query ($id: Int,$search: String) {
     }
 }
 """
-
 url = "https://graphql.anilist.co"
-sptext = ""
+sptext = """
 
 
 async def anilist(_, msg, aniid=None, u_id=None):
@@ -536,7 +535,7 @@ bot.add_handler(
     MessageHandler(
         anilist,
         filters=command(BotCommands.AniListCommand)
-        & CustomFilters.authorized
+        & filters.private
         & ~CustomFilters.blacklisted,
     )
 )
@@ -544,7 +543,7 @@ bot.add_handler(
     MessageHandler(
         character,
         filters=command("character")
-        & CustomFilters.authorized
+        & filters.private
         & ~CustomFilters.blacklisted,
     )
 )
@@ -552,7 +551,7 @@ bot.add_handler(
     MessageHandler(
         manga,
         filters=command("manga")
-        & CustomFilters.authorized
+        & filters.private
         & ~CustomFilters.blacklisted,
     )
 )
@@ -560,7 +559,7 @@ bot.add_handler(
     MessageHandler(
         anime_help,
         filters=command(BotCommands.AnimeHelpCommand)
-        & CustomFilters.authorized
+        & filters.private
         & ~CustomFilters.blacklisted,
     )
 )
