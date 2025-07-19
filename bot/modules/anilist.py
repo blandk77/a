@@ -535,7 +535,7 @@ bot.add_handler(
     MessageHandler(
         anilist,
         filters=command(BotCommands.AniListCommand)
-        & filters.private
+        & filters.private,
         & ~CustomFilters.blacklisted,
     )
 )
@@ -543,7 +543,7 @@ bot.add_handler(
     MessageHandler(
         character,
         filters=command("character")
-        & filters.private
+        & filters.private,
         & ~CustomFilters.blacklisted,
     )
 )
@@ -551,7 +551,7 @@ bot.add_handler(
     MessageHandler(
         manga,
         filters=command("manga")
-        & filters.private
+        & filters.private,
         & ~CustomFilters.blacklisted,
     )
 )
@@ -559,7 +559,7 @@ bot.add_handler(
     MessageHandler(
         anime_help,
         filters=command(BotCommands.AnimeHelpCommand)
-        & filters.private
+        & filters.private,
         & ~CustomFilters.blacklisted,
     )
 )
