@@ -1,5 +1,6 @@
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.filters import command, regex
+from pyrogram import filters 
 from html import escape
 from traceback import format_exc
 from base64 import b64encode
@@ -664,8 +665,7 @@ bot.add_handler(
     MessageHandler(
         qb_mirror,
         filters=command(BotCommands.QbMirrorCommand)
-        & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & filters.privat& ~CustomFilters.blacklisted,
     )
 )
 bot.add_handler(
@@ -680,7 +680,7 @@ bot.add_handler(
     MessageHandler(
         qb_leech,
         filters=command(BotCommands.QbLeechCommand)
-        & CustomFilters.authorized
+        & filters.private
         & ~CustomFilters.blacklisted,
     )
 )
