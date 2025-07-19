@@ -4,7 +4,7 @@ from pyrogram.filters import command, regex
 from psutil import cpu_percent, virtual_memory, disk_usage
 from time import time
 from asyncio import sleep
-
+from pyrogram import filters 
 from bot import (
     bot_cache,
     status_reply_dict_lock,
@@ -102,7 +102,7 @@ bot.add_handler(
     MessageHandler(
         mirror_status,
         filters=command(BotCommands.StatusCommand)
-        & CustomFilters.authorized
+        & filters.private
         & ~CustomFilters.blacklisted,
     )
 )
