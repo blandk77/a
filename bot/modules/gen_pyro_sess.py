@@ -5,7 +5,7 @@ from asyncio import sleep, wrap_future, Lock
 from functools import partial
 from cryptography.fernet import Fernet
 
-from pyrogram import Client
+from pyrogram import Client, filters
 from pyrogram.types import ForceReply
 from pyrogram.enums import ChatType
 from pyrogram.filters import command, user, text, private
