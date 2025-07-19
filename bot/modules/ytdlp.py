@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
+from pyrogram import filters
 from pyrogram.filters import command, regex, user
 from asyncio import sleep, wait_for, Event, wrap_future
 from aiohttp import ClientSession
@@ -617,7 +618,7 @@ bot.add_handler(
     MessageHandler(
         ytdl,
         filters=command(BotCommands.YtdlCommand)
-        & CustomFilters.authorized
+        & filters.private
         & ~CustomFilters.blacklisted,
     )
 )
@@ -625,7 +626,7 @@ bot.add_handler(
     MessageHandler(
         ytdlleech,
         filters=command(BotCommands.YtdlLeechCommand)
-        & CustomFilters.authorized
+        & filters.private
         & ~CustomFilters.blacklisted,
     )
 )
