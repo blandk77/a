@@ -5,7 +5,7 @@ from shlex import split as ssplit
 from aiofiles import open as aiopen
 from aiofiles.os import remove as aioremove, path as aiopath, mkdir
 from os import path as ospath, getcwd
-
+from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 from pyrogram.filters import command
 
@@ -126,7 +126,7 @@ bot.add_handler(
     MessageHandler(
         mediainfo,
         filters=command(BotCommands.MediaInfoCommand)
-        & CustomFilters.authorized
+        & filters.private,
         & ~CustomFilters.blacklisted,
     )
 )
