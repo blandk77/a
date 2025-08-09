@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from pyrogram import filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.filters import command, regex
 from psutil import cpu_percent, virtual_memory, disk_usage
@@ -103,7 +104,8 @@ bot.add_handler(
         mirror_status,
         filters=command(BotCommands.StatusCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(CallbackQueryHandler(status_pages, filters=regex("^status")))
