@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from pyrogram import filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.filters import command, regex
 from aiohttp import ClientSession
@@ -328,7 +329,8 @@ bot.add_handler(
         torrentSearch,
         filters=command(BotCommands.SearchCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(CallbackQueryHandler(torrentSearchUpdate, filters=regex("^torser")))
