@@ -172,13 +172,17 @@ async def black_listed(_, message):
 
 bot.add_handler(
     MessageHandler(
-        authorize, filters=command(BotCommands.AuthorizeCommand) & CustomFilters.sudo
+        authorize, filters=command(BotCommands.AuthorizeCommand) 
+        & CustomFilters.sudo
+        & filters.group,
     )
 )
 bot.add_handler(
     MessageHandler(
         unauthorize,
-        filters=command(BotCommands.UnAuthorizeCommand) & CustomFilters.sudo,
+        filters=command(BotCommands.UnAuthorizeCommand) 
+        & CustomFilters.sudo
+        & filters.group,
     )
 )
 bot.add_handler(
