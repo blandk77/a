@@ -4,7 +4,7 @@ from aiohttp import ClientSession
 from requests import get as rget
 from urllib.parse import quote as q
 from pycountry import countries as conn
-
+from pyrogram import filters
 from pyrogram.filters import command, regex
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.errors import (
@@ -129,7 +129,7 @@ def list_to_str(k, cast=False):
         k = k[: int(LIST_ITEMS)]
     if cast:
         return " ".join(
-            f"""<a href="{elem.get('link')}">{elem.get('name')}</a>,""" for elem in k
+            f"""<a href='{elem.get('link')}'>{elem.get('name')}</a>,""" for elem in k
         )[:-1]
     return " ".join(f"{elem}," for elem in k)[:-1]
 
@@ -219,7 +219,8 @@ bot.add_handler(
         mydramalist_search,
         filters=command(BotCommands.MyDramaListCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(CallbackQueryHandler(mdl_callback, filters=regex(r"^mdl")))
