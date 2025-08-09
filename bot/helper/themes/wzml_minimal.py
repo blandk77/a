@@ -2,13 +2,13 @@
 class WZMLStyle:
     # ----------------------
     # async def start(client, message) ---> __main__.py
-    ST_BN1_NAME = "Nothing 👀"
-    ST_BN1_URL = "t.me/itsme123i"
-    ST_BN2_NAME = "Updates"
-    ST_BN2_URL = "https://t.me/The_TGguy"
-    ST_MSG = """<i>This bot can mirror all your links|files|torrents to Google Drive or any rclone cloud or to telegram or to ddl servers.</i>
+    ST_BN1_NAME = "• ᑌᑭᗪᗩTᗴՏ •"
+    ST_BN1_URL = "https://t.me/+ipiHTFYbG3s1ZWY1"
+    ST_BN2_NAME = "• ՏᑌᑭᑭOᖇT •"
+    ST_BN2_URL = "https://t.me/+jxQqum8eS-M5YzY1"
+    ST_MSG = """<i>This bot can mirror all your links|files|torrents to Google Drive or any rclone cloud or to telegram or to ddl servers in your PM or amy group.</i>
 <b>Type {help_command} to get a list of available commands</b>"""
-    ST_BOTPM = """<i>Now, This bot will send all your files and links here. Start Using ...</i>"""
+    ST_BOTPM = """<i>Now, This bot will send all your files and links here. Start Using in PM or group...</i>"""
     ST_UNAUTH = """<i>You Are not authorized user!</i>"""
     OWN_TOKEN_GENERATE = (
         """<b>Temporary Token is not yours!</b>\n\n<i>Kindly generate your own.</i>"""
