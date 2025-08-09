@@ -6,7 +6,7 @@ from datetime import datetime
 from calendar import month_name
 from pycountry import countries as conn
 from urllib.parse import quote as q
-
+from pyrogram import filters
 from bot import bot, LOGGER, config_dict, user_data
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
@@ -273,7 +273,7 @@ async def anilist(_, msg, aniid=None, u_id=None):
             for x in animeResp["genres"]
         )
         studios = ", ".join(
-            f"""<a href="{x['siteUrl']}">{x['name']}</a>"""
+            f"""<a href='{x['siteUrl']}'>{x['name']}</a>"""
             for x in animeResp["studios"]["nodes"]
         )
         source = animeResp["source"] or "-"
@@ -537,7 +537,8 @@ bot.add_handler(
         anilist,
         filters=command(BotCommands.AniListCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(
@@ -545,7 +546,8 @@ bot.add_handler(
         character,
         filters=command("character")
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(
@@ -553,7 +555,8 @@ bot.add_handler(
         manga,
         filters=command("manga")
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(
@@ -561,7 +564,8 @@ bot.add_handler(
         anime_help,
         filters=command(BotCommands.AnimeHelpCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(CallbackQueryHandler(setAnimeButtons, filters=regex(r"^anime")))
