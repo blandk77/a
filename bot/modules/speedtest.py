@@ -12,7 +12,7 @@ from bot.helper.telegram_helper.message_utils import (
     editMessage,
 )
 from bot.helper.ext_utils.bot_utils import get_readable_file_size, new_task
-
+from pyrogram import filters
 
 @new_task
 async def speedtest(_, message):
@@ -69,6 +69,7 @@ bot.add_handler(
         speedtest,
         filters=command(BotCommands.SpeedCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
