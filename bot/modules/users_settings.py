@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from pyrogram import filters
 from datetime import datetime
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.filters import command, regex, create
@@ -1240,7 +1241,9 @@ bot.add_handler(
 bot.add_handler(
     MessageHandler(
         user_settings,
-        filters=command(BotCommands.UserSetCommand) & CustomFilters.authorized_uset,
+        filters=command(BotCommands.UserSetCommand) 
+        & CustomFilters.authorized_uset
+        & filters.private,
     )
 )
 bot.add_handler(CallbackQueryHandler(edit_user_settings, filters=regex("^userset")))
