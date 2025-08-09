@@ -4,7 +4,7 @@ from aiofiles.os import remove as aioremove
 from asyncio import sleep, wrap_future, Lock
 from functools import partial
 from cryptography.fernet import Fernet
-
+from pyrogram import filters
 from pyrogram import Client
 from pyrogram.types import ForceReply
 from pyrogram.enums import ChatType
