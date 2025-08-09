@@ -8,7 +8,7 @@ from asyncio import sleep, wrap_future
 from aiofiles import open as aiopen
 from aiofiles.os import path as aiopath
 from cloudscraper import create_scraper
-
+from pyrogram import filters
 from bot import (
     bot,
     DOWNLOAD_DIR,
@@ -657,7 +657,8 @@ bot.add_handler(
         mirror,
         filters=command(BotCommands.MirrorCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(
@@ -665,7 +666,8 @@ bot.add_handler(
         qb_mirror,
         filters=command(BotCommands.QbMirrorCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(
@@ -673,7 +675,8 @@ bot.add_handler(
         leech,
         filters=command(BotCommands.LeechCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(
@@ -681,7 +684,8 @@ bot.add_handler(
         qb_leech,
         filters=command(BotCommands.QbLeechCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(CallbackQueryHandler(wzmlxcb, filters=regex(r"^wzmlx")))
