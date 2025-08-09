@@ -3,7 +3,7 @@ from contextlib import suppress
 from re import findall, IGNORECASE
 from imdb import Cinemagoer
 from pycountry import countries as conn
-
+from pyrogram import filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.filters import command, regex
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -321,7 +321,8 @@ bot.add_handler(
         imdb_search,
         filters=command(BotCommands.IMDBCommand)
         & CustomFilters.authorized
-        & ~CustomFilters.blacklisted,
+        & ~CustomFilters.blacklisted
+        & filters.private,
     )
 )
 bot.add_handler(CallbackQueryHandler(imdb_callback, filters=regex(r"^imdb")))
